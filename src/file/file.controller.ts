@@ -10,7 +10,7 @@ import { Request, Response } from 'express';
 @ApiTags('file')
 export class FileController {
 
-  SERVER_URL = 'http://localhost:3000/';
+  SERVER_URL = 'http://localhost:3001/';
 
   constructor() {
   }
