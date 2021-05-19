@@ -8,16 +8,18 @@ import {
   ParseIntPipe,
   Post,
   Put,
-  Res,
+  Res, UseGuards,
   UsePipes, ValidationPipe,
 } from '@nestjs/common';
 import { BookService } from './book.service';
 import { Create_book_dto } from './model/dto/create_book_dto';
 import { Response } from 'express';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('books')
 @ApiTags("Book")
+@UseGuards(AuthGuard('jwt'))
 export class BookController {
   constructor(private bookService: BookService) {
   }

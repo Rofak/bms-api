@@ -8,7 +8,7 @@ import {
   ParseIntPipe,
   Post,
   Put,
-  Res,
+  Res, UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
@@ -20,9 +20,11 @@ import { ResponseMessage } from '../utils/ResponseMessage';
 import { Category } from './model/category.entity';
 import { INSERT_SUCCESSFULLY } from '../utils/ConstMessage';
 import { Timestamp } from 'typeorm';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('categories')
 @ApiTags('Categories')
+@UseGuards(AuthGuard('jwt'))
 export class CategoryController {
   constructor(private categoryService: CategoryService) {
   }
